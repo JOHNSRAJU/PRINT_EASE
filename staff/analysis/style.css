@@ -1,0 +1,196 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: cornflowerblue;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .image {
+    height: 30px;
+    margin-right: 5px;
+  }
+  
+  .navbar a {
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .navbar ul a {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  
+  .navbar ul a:hover {
+    border-bottom: 2px solid;
+  }
+  
+  .dateDiv {
+    display: flex;
+    padding: 2%;
+    margin-top: 1rem;
+    justify-content: end;
+  }
+  .dateLabel {
+    font-weight: bold;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+  
+  .dateInput {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .rabtn{
+    margin-top: 1rem;
+    padding-left: 36%;
+  }
+  
+  .sbutton {
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .sbutton:hover {
+    background-color: #45a049;
+  }
+  
+  #searchInput {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  #searchInput:focus {
+    outline: none;
+  }
+  .order-box {
+    width: 500px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: #00000040 0px 0px 20px;
+  }
+
+  /* New styles for each line in the order box */
+  .order-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    padding: 8px;
+  }
+
+  /* New styles for the order number on the left side */
+  .order-number {
+    font-weight: bold;
+  }
+
+  /* New styles for the order cost on the right side */
+  .order-cost {
+    text-align: right;
+  }
+
+  /* Additional custom styles for each line with different colors */
+  .order-line:nth-child(odd) {
+    background-color: #ffddee; /* Light pink */
+  }
+
+  .order-line:nth-child(even) {
+    background-color: #e3f2fd; /* Light blue */
+  }
+  /* New styles for the order cost on the right side */
+  .order-cost {
+    text-align: right;
+  }
+
+  .order-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .download-button {
+    position: relative;
+    border-width: 0;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 4px;
+    z-index: 1;
+    text-align: center;
+   }
+   
+   .download-button .docs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 40px;
+    padding: 0 10px;
+    border-radius: 4px;
+    z-index: 1;
+    background-color: #242a35;
+    border: solid 1px #e8e8e82d;
+    transition: all .5s cubic-bezier(0.77, 0, 0.175, 1);
+   }
+   
+   .download-button:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+   }
+   
+   .download {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 90%;
+    margin: 0 auto;
+    z-index: -1;
+    border-radius: 4px;
+    transform: translateY(0%);
+    background-color: #01e056;
+    border: solid 1px #01e0572d;
+    transition: all .5s cubic-bezier(0.77, 0, 0.175, 1);
+   }
+   
+   .download-button:hover .download {
+    transform: translateY(100%)
+   }
+   
+   .download svg polyline,.download svg line {
+    animation: docs 1s infinite;
+   }
+   
+   @keyframes docs {
+    0% {
+     transform: translateY(0%);
+    }
+   
+    50% {
+     transform: translateY(-15%);
+    }
+   
+    100% {
+     transform: translateY(0%);
+    }
+   }

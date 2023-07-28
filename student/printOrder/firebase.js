@@ -198,11 +198,11 @@ auth.onAuthStateChanged(function (user) {
       const hours = String(currentDate.getHours()).padStart(2, '0');
       const minutes = String(currentDate.getMinutes()).padStart(2, '0');
       const seconds = String(currentDate.getSeconds()).padStart(2, '0');
-      
+
       date = `${year}-${month}-${day}`;
       time = `${hours}:${minutes}:${seconds}`;
       dateTimeU = `${date}/${time}`;
-      
+
 
     }
 
@@ -226,6 +226,7 @@ auth.onAuthStateChanged(function (user) {
       let result = window.confirm("Are you sure to place this order\nYou have to pay RS " + price + " /-")
       if (result === true) {
         try {
+          
           const collectionRef = collection(db, "data");
           // Upload PDF file
           const fileInput = document.getElementById('file-upload');
@@ -268,15 +269,15 @@ auth.onAuthStateChanged(function (user) {
           console.error(error);
           alert("Error ordering");
         }
-      }else{
+      } else {
         window.location.href = "../index.html";
       }
-      });
+    });
 
-} else {
-  // The user is not signed in.
-  window.location.href = "../../login.html";
-}
+  } else {
+    // The user is not signed in.
+    window.location.href = "../../login.html";
+  }
 });
 
 const buttonWrapper = document.querySelector(".button_wrapper");
