@@ -20,7 +20,7 @@ const auth = getAuth();
 const db = getFirestore();
 const storage = getStorage(app);
 
-
+var docid;
 auth.onAuthStateChanged(function (user) {
   if (user) {
     const radio1 = document.querySelector('.radio1');
@@ -202,11 +202,7 @@ auth.onAuthStateChanged(function (user) {
       date = `${year}-${month}-${day}`;
       time = `${hours}:${minutes}:${seconds}`;
       dateTimeU = `${date}/${time}`;
-
-
     }
-
-
     document.getElementById("submit").addEventListener("click", async function (event) {
       event.preventDefault(); // Prevent form submission
       caluculatePrice();
@@ -258,12 +254,15 @@ auth.onAuthStateChanged(function (user) {
             time: time,
             timestamp: dateTimeU
           });
+          docid = docRef.id;
           if (method == 'Online') {
-            //sessionStorage.setItem("price")
-            window.location.href = "./online/index.html";
+
+            document.getElementById("all").style.display = "none";
+            document.getElementById("online").style.display = "block";
           } else {
             alert("Order has Placed");
-            window.location.href = "../index.html";
+            window.location.href = "../invoice/index.html?docid="+docRef.id;
+
           }
         } catch (error) {
           console.error(error);
@@ -280,6 +279,16 @@ auth.onAuthStateChanged(function (user) {
   }
 });
 
+let popup=document.getElementById("popup");
+document.getElementById("Btn1").addEventListener("click",function(){
+    popup.classList.add("open-popup")
+    //add 5sec delay
+    setTimeout(()=>{
+        window.location.href ="../invoice/index.html?docid="+docid;
+    },5000);
+
+});
+
 const buttonWrapper = document.querySelector(".button_wrapper");
 buttonWrapper.addEventListener("click", () => {
   if (!buttonWrapper.classList.contains("loading")) {
@@ -289,4 +298,7 @@ buttonWrapper.addEventListener("click", () => {
       setTimeout(() => buttonWrapper.classList.remove("loading", "done"), 100);
     }, 2800);
   }
+});
+document.getElementById("ok").addEventListener("click",function(){
+  window.location.href ="../invoice/index.html?docid="+docid;
 });

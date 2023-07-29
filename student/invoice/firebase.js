@@ -52,7 +52,17 @@ auth.onAuthStateChanged(async function (user) {
   } catch(error) {
       console.log(error)
   }
+  document.getElementById("downloadbutton").addEventListener("click", function (event) {
+    // Handle download event
+    const cardContainer = document.querySelector('.container');
+    html2canvas(cardContainer).then(function (canvas) {
+      const link = document.createElement('a');
+      link.download = 'PRINTEASE_INVOICE.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
 
+  });
     document.getElementById("logout").addEventListener("click", function (event) {
       event.preventDefault();
       signOut(auth)
