@@ -104,7 +104,7 @@ auth.onAuthStateChanged(async function (user) {
         <span>Price: Rs ${Math.ceil(data.Fprice)}</span><br>
         <span>Date: ${data.Date}</span><br>
         <span>Status: ${data.Fstatus}</span><br>
-        <a href="${downloadURL}"><img class="book" src="../../images/open.gif" alt="Your GIF"></a>
+        <a href="./invoice/index.html?docid=${doc.ref.id}"><img class="book" src="../../images/open.gif" alt="Your GIF"></a>
       `;
       if (data.Fstatus === 'Pending') {
         // Append the delete button to the card content
