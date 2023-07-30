@@ -186,7 +186,10 @@ auth.onAuthStateChanged(function (user) {
         price *= count;
       }
     }
-
+    function load(){
+      document.getElementById("loader").style.display = "block";
+      document.getElementById("all").style.display = "none";
+    }
     let date;
     let time;
     let dateTimeU;
@@ -205,6 +208,7 @@ auth.onAuthStateChanged(function (user) {
     }
     document.getElementById("submit").addEventListener("click", async function (event) {
       event.preventDefault(); // Prevent form submission
+      load();
       caluculatePrice();
       dateTime();
       let status = "Pending";
@@ -228,8 +232,7 @@ auth.onAuthStateChanged(function (user) {
           const fileInput = document.getElementById('file-upload');
           const pdfFile = fileInput.files[0];
           const pdfRef = ref(storage, 'pdfs/' + pdfFile.name);
-          await uploadBytes(pdfRef, pdfFile);
-
+          await uploadBytes(pdfRef, pdfFile); 
           // Upload audio file
           const audioBlob = new Blob(chunks, { type: 'audio/webm' });
           const audioRef = ref(storage, 'audios/' + fileName + '.webm');
