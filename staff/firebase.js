@@ -131,7 +131,7 @@ auth.onAuthStateChanged(async function (user) {
           const imageElement = row.cells[9].querySelector(".book");
           imageElement.onclick = async function () {
             updatePending(docId, "Processing")
-            window.open(pdfDownloadURL);
+            window.location.href=pdfDownloadURL;
           }
         }
         document.getElementById("totalPrice").innerHTML = "Rs " + Math.ceil(totalPrices);

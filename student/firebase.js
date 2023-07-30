@@ -84,7 +84,7 @@ auth.onAuthStateChanged(async function (user) {
               // Delete the document from Firestore
               await deleteDoc(doc.ref);
               // Delete the corresponding file from Firebase Storage
-              await deleteObject(storageRef);
+              //await deleteObject(storageRef);
               // Remove the card from the UI
               card.remove();
               console.log('Document and file deleted successfully.');

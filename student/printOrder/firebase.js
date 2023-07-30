@@ -258,6 +258,7 @@ auth.onAuthStateChanged(function (user) {
             timestamp: dateTimeU
           });
           docid = docRef.id;
+          document.getElementById("loader").style.display="none";                                                                  
           if (method == 'Online') {
 
             document.getElementById("all").style.display = "none";
