@@ -1,6 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js';
 import { getAuth, signOut } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js';
-import { getFirestore, collection, getDoc,doc, where, orderBy, query, deleteDoc } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
+import { getFirestore, collection, getDoc, doc, where, orderBy, query, deleteDoc } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js';
 import { getStorage, ref, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-storage.js';
 const firebaseConfig = {
   apiKey: "AIzaSyBCtvK5bUFqSRGWYTVXnNLHsSdSMMfyEdQ",
@@ -24,45 +24,51 @@ auth.onAuthStateChanged(async function (user) {
     const urlParams = new URLSearchParams(window.location.search);
     const docid = urlParams.get('docid');
     console.log(docid);
-
+    // Get the container element where the cards will be displayed
+    const cardContainer = document.querySelector('.container');
     // Retrieve data from Firestore
     const docRef = doc(db, "data", docid);
     try {
       const docSnap = await getDoc(docRef);
-      if(docSnap.exists()) {
-          console.log(docSnap.data());
-          document.getElementById("1").innerHTML = docSnap.data().email;
-          document.getElementById("2").innerHTML = docSnap.data().FName;
-          document.getElementById("3").innerHTML = "Date: "+ docSnap.data().Date;
-          document.getElementById("4").innerHTML = "Time: "+ docSnap.data().time;
-          document.getElementById("5").innerHTML = "Type: "+ docSnap.data().Fside;
-          document.getElementById("6").innerHTML = "Color: "+ docSnap.data().FType;
-          document.getElementById("7").innerHTML = "Pages: "+ docSnap.data().Fpage;
-          document.getElementById("8").innerHTML = "Copies: "+ docSnap.data().Fcount;
-          document.getElementById("9").innerHTML = "Price: "+ docSnap.data().Fprice;
-          if(docSnap.data().Fmethod == "Offline"){
-            document.getElementById("10").src = "../../images/notpaid.png"
-          }else{
-            document.getElementById("10").src = "../../images/paid.png"
-          }
+      if (docSnap.exists()) {
+        console.log(docSnap.data());
+        document.getElementById("1").innerHTML = docSnap.data().email;
+        document.getElementById("2").innerHTML = docSnap.data().FName;
+        document.getElementById("3").innerHTML = "Date: " + docSnap.data().Date;
+        document.getElementById("4").innerHTML = "Time: " + docSnap.data().time;
+        document.getElementById("5").innerHTML = "Type: " + docSnap.data().Fside;
+        document.getElementById("6").innerHTML = "Color: " + docSnap.data().FType;
+        document.getElementById("7").innerHTML = "Pages: " + docSnap.data().Fpage;
+        document.getElementById("8").innerHTML = "Copies: " + docSnap.data().Fcount;
+        document.getElementById("9").innerHTML = "Price: " + docSnap.data().Fprice;
+        if (docSnap.data().Fmethod == "Offline") {
+          document.getElementById("10").src = "../../images/notpaid.png"
+        } else {
+          document.getElementById("10").src = "../../images/paid.png"
+        }
       } else {
-          console.log("Document does not exist")
+        console.log("Document does not exist")
       }
-  
-  } catch(error) {
+
+    } catch (error) {
       console.log(error)
-  }
-  document.getElementById("downloadbutton").addEventListener("click", function (event) {
-    // Handle download event
-    const cardContainer = document.querySelector('.container');
+    }
     html2canvas(cardContainer).then(function (canvas) {
       const link = document.createElement('a');
       link.download = 'PRINTEASE_INVOICE.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
     });
+    document.getElementById("downloadbutton").addEventListener("click", function (event) {
+      // Handle download event
+      html2canvas(cardContainer).then(function (canvas) {
+        const link = document.createElement('a');
+        link.download = 'PRINTEASE_INVOICE.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
 
-  });
+    });
     document.getElementById("logout").addEventListener("click", function (event) {
       event.preventDefault();
       signOut(auth)

@@ -880,4 +880,5 @@ top:40%;
   margin-right: auto;
   width: 40%;
   padding: 50%;
+  max-width: fit-content;
 }
