@@ -35,7 +35,6 @@ body {
     font-size: 1.2rem;
     text-decoration: none;
   }
-  
   .navbar ul {
     list-style: none;
     display: flex;
@@ -222,3 +221,11 @@ body {
   #searchInput:focus {
     outline: none;
   }
+  @media screen and (max-width: 600px) {
+
+    #na {
+        display: none;
+
+    }
+
+}

@@ -34,6 +34,18 @@ auth.onAuthStateChanged(async function (user) {
         }
       }
     });
+    const collectionRefName = collection(db, 'user');
+    const q = query(collectionRefName, where('UserId', '==', user.uid));
+    const querySnapshotName = await getDocs(q);
+    
+    if (!querySnapshotName.empty) {
+      querySnapshotName.forEach((docSnapshot) => {
+        var userData = docSnapshot.data();
+        document.getElementById("na").textContent = userData.Name;
+      });
+    } else {
+      console.log("User not found");
+    }
     
     // Retrieve data from Firestore
     const collectionRef = collection(db, 'data');
