@@ -41,7 +41,7 @@ auth.onAuthStateChanged(async function (user) {
     if (!querySnapshotName.empty) {
       querySnapshotName.forEach((docSnapshot) => {
         var userData = docSnapshot.data();
-        document.getElementById("na").textContent = userData.Name;
+        document.getElementById("na").textContent = "Welcome, "+userData.Name;
       });
     } else {
       console.log("User not found");
